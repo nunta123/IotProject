@@ -1,0 +1,46 @@
+// Media Queary Manager
+/*
+0 - 600 px          Phone
+600 - 900 px        Tablet portrait
+900 - 1200 px       Tablet Landscape
+1200 - 1800 px      Desktop
+1800+               Big Desktop
+// Type-1
+@mixin respond-phone {
+    @media (max-width: 600px) { @content };
+}
+$breakpoint arguement choice:
+-phone
+-tab-port
+-tab-land
+-big-desktop
+*/
+
+// 1em = 16px
+// เริ่มจากหน้าจอมือถือ
+
+@mixin respond($breakpoint) { //ใน breakpoint ใส่ phone/tab-land/tab-port เป็นต้น
+    @if $breakpoint == phone-port {
+        @media (min-width: 20.05em) { @content };  // 320px พอดี
+    }
+
+    @if $breakpoint == phone-land {
+        @media (min-width: 30.05em) { @content };  // 480px พอดี
+    }
+
+    @if $breakpoint == tab-port {
+        @media (min-width: 48.05em) { @content }; // 768px พอดี
+    }
+
+    @if $breakpoint == tab-land {
+        @media (min-width: 64.05em) { @content }; // 1024px พอดี
+    }
+
+    @if $breakpoint == desktop {
+        @media (min-width: 80.05em) { @content }; // 1280px พอดี
+    }
+
+    @if $breakpoint == big-desktop {
+        @media (min-width: 90.05em) { @content }; // 1440px พอดี
+    }
+}
